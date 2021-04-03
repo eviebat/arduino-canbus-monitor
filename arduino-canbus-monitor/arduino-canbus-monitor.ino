@@ -39,7 +39,15 @@ void setup() {
 INT8U myCustomAddressFilter(INT32U addr) {
     INT8U ret = LW232_FILTER_SKIP; //LW232_FILTER_PROCESS or LW232_FILTER_SKIP
     switch(addr) {
-        case 0x122: // torque limits
+        case 0x122: // tesla torque limits
+            ret = LW232_FILTER_PROCESS;
+            break;
+        case 0x222: //tesla torque 
+            ret = LW232_FILTER_PROCESS;
+            break;
+        default:
+            ret = LW232_FILTER_SKIP;
+            break;
     }
   return ret;
 }
